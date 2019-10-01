@@ -1,88 +1,141 @@
 from graphics import*
-win = GraphWin("MyWin", 700, 1000)
 
-
-r = Rectangle(Point(93,355), Point(555, 663))# первый этаж
-r.setWidth(3)
-r.setFill("#efe3af")
-
-
-p=Polygon(Point(67,355),Point(327,55),Point(587,355))# крыша
-p.setWidth(3)
-p.setFill("#efe3af")
-
-
-k=Polygon(Point(252,200),Point(327,122),Point(397,201),Point(327,278))# оконтовка верхнего окна
-k.setWidth(3)
-k.setFill("#b77a5d")
-
-o=Circle(Point(440,410),26)# фонарь
-o.setWidth(3)
-o.setFill("yellow")
-
-g=Polygon(Point(273,200),Point(327,148),Point(378,199),Point(327,251), Point(327,148), Point(327,251))#верхнее окно
-z=Line(Point(273,200),Point(378,199))
-z.setWidth(3)
-g.setWidth(3)
-g.setFill("#98daea")
-
-
-q = Rectangle(Point(145,389), Point(321, 404))#
-q.setWidth(3)
-q.setFill("#b77a5d")
-w = Rectangle(Point(157,404), Point(310, 578))#
-w.setWidth(3)
-w.setFill("#98daea")
-e = Rectangle(Point(145,579), Point(321, 593))#
-e.setWidth(3)
-e.setFill("#b77a5d")
-t=Line(Point(158,453), Point(311, 453))#
-t.setWidth(3)
-y=Line(Point(235,453), Point(235, 579))#нижнее окно
-y.setWidth(3)
-
-
-
-u = Rectangle(Point(354,444), Point(517, 457))#
-u.setWidth(3)
-u.setFill("#b77a5d")
-i = Rectangle(Point(365,459), Point(505, 662))#
-i.setWidth(3)
-i.setFill("#880016")
-a = Rectangle(Point(474,532), Point(483, 580))#дверь
-a.setFill("#b77a5d")
-a.setWidth(3)
-
-
-s = Rectangle(Point(145,40), Point(255, 69))#
-s.setWidth(3)
-s.setFill("#7f7f7f")
-d=Polygon(Point(171,232),Point(171,70),Point(233,70), Point(233,160))# труба
-d.setWidth(3)
-d.setFill("#da4800")
-
-
-
-
-
-r.draw(win)
-p.draw(win)
-k.draw(win)
-o.draw(win)
-g.draw(win)
-z.draw(win)
-q.draw(win)
-w.draw(win)
-e.draw(win)
-t.draw(win)
-y.draw(win)
-u.draw(win)
-i.draw(win)
-a.draw(win)
-s.draw(win)
-d.draw(win)
-
-
+win=GraphWin("Home",1200,700)
+def draw_roof(x,y,increase=1,color="#efe3af",has_roof_window1=True,has_roof_edging_w1=True) #Крыша
+    p=Polygon(Point(x-260*increase,y),Point(x,y-300*increase),Point(x+260*increase,y))
+    p.setWidth(3)
+    p.setFill(color)
+    p.draw(win)
+    if has_roof_window1==True:
+        draw window1(x,y-155*increase)
+    if has_roof_edging_w1==True:
+        draw_edging_w1(x,y-155*increase)
+def draw_edging_w1(x,y,increase=1,color="#b77a5d") #Окантовка верхнего окна
+    k=Polygon(Point(x-70*increase,y),Point(x,y-78*increase),Point(x+70*increase,y),Point(x,y+78*increase))
+    k.setWidth(3)
+    k.setFill(color)
+    k.draw(win)
+def draw_lamp(x,y,increase,color="yellow") #Фонарь
+    o=Circle(Point(x,y),26*increase)
+    o.setWidth(3)
+    o.setFill(color)
+    o.draw(win)
+def draw_window1(x,y,increase=1,color="#98daea") #Верхнее окно
+    g=Polygon(Point(x-50*increase),y),Point(x,y-50*increase)),Point(x+50*increase),y),Point(x,y+50*increase))
+    z=Line(Point(x-50*increase,y),Point(x+50*increase,y))
+    b=Line(Point(x,y-50*increase),Point(x,y+50*increase))
+    g.setWidth(3)
+    z.setWidth(3)
+    b.setWidth(3)
+    g.setFill(color)
+    g.draw(win)
+    z.draw(win)
+    b.draw(win)
+def draw_window2(x,y,increase=1,color1="#b77a5d",color2="#98daea",color3="#b77a5d") #Нижнее окно
+    q=Rectangle(Point(x-90*increase,y-7*increase),Point(x+90*increase,y+7*increase))
+    q.setWidth(3)
+    q.setFill(color1)
+    w=Rectangle(Point(x-78*increase,y+7*increase),Point(x+78*increase,y+183*increase))
+    w.setWidth(3)
+    w.setFill(color2)
+    e=Rectangle(Point(x-90*increase,y+183*increase),Point(x+90*increase,y+197*increase))
+    e.setWidth(3)
+    e.setFill(color3)
+    t=Line(Point(x-78*increase,y+56*increase),Point(x+78*increase,y+56*increase))
+    t.setWidth(3)
+    y=Line(Point(x,y+56*increase),Point(x,y+189*increase))
+    y.setWidth(3)
+    q.draw(win)
+    w.draw(win)
+    e.draw(win)
+    t.draw(win)
+    y.draw(win)
+def draw_door(x,y,increase=1,color1="#b77a5d",color2="#880016",color3="#b77a5d") #Дверь
+    u=Rectangle(Point(x,444),Point(x+163,457))
+    u.setWidth(3)
+    u.setFill(color1)
+    i=Rectangle(Point(365,459),Point(505,662))
+    i.setWidth(3)
+    i.setFill(color2)
+    a=Rectangle(Point(474,532),Point(483,580))
+    a.setFill(color3)
+    a.setWidth(3)
+    u.draw(win)
+    i.draw(win)
+    a.draw(win)
+def draw_trumpet(x,y,increase=1,color1="#7f7f7f",color2="#da4800") #Труба
+    s=Rectangle(Point(145,40),Point(255,69))
+    s.setWidth(3)
+    s.setFill(color1)
+    d=Polygon(Point(171,232),Point(171,70),Point(233,70),Point(233,160))
+    d.setWidth(3)
+    d.setFill(color2)
+    s.draw(win)
+    d.draw(win)
+def draw_house(x,y,increase=1,color1,color2,color3,color4):
+    r=Rectangle(Point(x-231*increase,y), Point(x+231*increase, y+308*increase)) #Первый этаж
+    r.setWidth(3)
+    r.setFill(color1)
+    r.draw(win)
+    draw_roof(x+3,y,increase,color,has_roof_window1,has_roof_edging_w1)
+    draw_lamp(x+116,y+55,increase,color)
+    draw_window2(x-89,y+31,increase,color1,color2,color3)
+    draw_door(x,y,increase,color1,color2,color3)
+    draw_trumpet(x,y,increase,color1,color2)
+def draw_tree(x,y,tree_increase as t_i=1,trunk_color,needles_color): #Дерево (координаты центра верхней стороны ствола, увеличение, цвет ствола, цвет иголок)
+    tree_trunk=Rectangle(Point(x-10*t_i,y),Point(x+10*t_i,y+50*t_i)) #Ствол ёлки (контур)
+    tree_trunk=setFill(trunk_color)
+    christmas_tree_needles=Polygon(Point(x,y),Point(x-45*t_i,y),Point(x-30*t_i,y-10*t_i),Point(x-15*t_i,y-20*t_i),Point(x,y-30*t_i),Point(x+15*t_i,y-20*t_i),Point(x+30*t_i,y-10*t_i),Point(x+45*t_i,y*t_i)) #Ёлки иголки (контур дерева)
+    christmas_tree_needles=setFill(needles_color)
+def draw_sun(x,y,sun_radius,sun_color,sun_increase=1): #Солнце (координаты, радиус, цвет, увеличение)
+    solar_corona=Circle(Point(x,y),sun_radius*sun_increase)
+    solar_corona.setFill(sun_color)
+    advertisement_YOTA=Text(Point(x,y),"Реклама YOTA на Солнце")
+    solar_corona.draw(win)
+    if sun_radius<=25:
+        advertisement_YOTA.draw(win)
+def draw_cloud(x,y,A,B,cloud_color=,cloud_increase as c_i=1): #Облако (координаты центра, большие оси, цвет, увеличение)
+    cloud=Oval(Point(x-A/2*c_i,y-B/2*c_i),Point(x+A/2*c_i,y+B/2*c_i))
+    cloud.setFill(cloud_color)
+    cloud.draw(win)
+def draw_person(x,y,size,this_person_is_a_man=True) #Человек (координаты центра, размер, пол)
+    head=Circle(Point(x,y),15*size)
+    head.setFill("white")
+    eye_r=Circle(Point(x-4*size,y-4*size), 1*size)
+    eye_l=Circle(Point(x+4*size,y-4*size), 1*size)
+    roth=Line(Point(x-4*size,y+4*size), Point(x+4*size,y+4*size)
+    head.draw(win)
+    eye_r.draw(win)
+    eye_l.draw(win)
+    if this_person_is_a_man=True:
+        body1=Polygon(Point(x,y+65*size),Point(x-30*size,y+15*size),Point(x+30*size,y+15*size))
+        body1.setFill("red")
+        body1.draw(win)
+        hand_r1=Line(Point(x-30,y+15*size),Point(x-45*size,y+40*size))
+        hand_r1.draw(win)
+        hand_l1=Line(Point(x+30,y+15*size),Point(x+45*size,y+40*size))
+        hand_l2.draw(win)
+        leg_r1=Line(Point(x-12*size,y+30*size),Point(x-12*size,y+60*size))
+        leg_r1.draw(win)
+        leg_l1=Line(Point(x+12*size,y+30*size),Point(x+12*size,y+60*size))
+        leg_l1.draw(win)
+    if this_person_is_a_man=False:
+        body2=Polygon(Point(x,y+15*size),Point(x-30*size,y+65*size),Point(x+30*size,y+65*size))
+        body2.setFill("green")
+        body2.draw(win)
+        hand_r2=Line(Point(x,y+15*size),Point(x-25*size,y+40*size))
+        hand_r2.draw(win)
+        hand_l2=Line(Point(x,y+15*size),Point(x+25*size,y+40*size))
+        hand_l2.draw(win)
+        leg_r2=Line(Point(x-10*size,y+65*size),Point(x-10*size,y+95*size))
+        leg_r2.draw(win)
+        leg_l2=Line(Point(x+10*size,y+65*size),Point(x+10*size,y+95*size))
+        leg_l2.draw(win)
+Draw_Cloud(300,50,20,50,)
+Draw_Sun(568,68,32)
+Draw_House(324,355)
+Draw_Tree(1000,300)
+Draw_Child(850,200)
 win.getMouse()
 win.close()
 
